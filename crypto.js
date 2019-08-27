@@ -2,12 +2,27 @@ const cryp = "d oljhlud udsrvd pduurp vdowrx vreuh r fdfkruur fdqvdgr";
 const casas = 3;
 
 var Cripto = function (letra) {
-
     if (letra == "d") {
         return "a"
     } else if (letra == "o") {
         return "l"      
     }
+}
+
+
+function Cry(casas) {
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
+    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "w", "y", "z"]
+    var newAlphabet = [];
+
+    for (let index = 0; index < 26; index++) {
+        if ((index - casas) < 0) {
+            newAlphabet[index] = alphabet[(26 + (index - casas))];
+        } else 
+            newAlphabet[index] = alphabet[index - casas];
+    }
+
+    return newAlphabet;
 }
 
 var wordCripto = function (palavra) {
@@ -58,7 +73,7 @@ function testeWord() {
 function teste() {
 
     var expected = "a ligeira raposa marrom saltou sobre o cachorro cansado";
-    var output = Cripto();
+    var output = Cripto(cryp, casas);
 
     if (output == expected) {
         console.log('OK');
@@ -70,3 +85,4 @@ function teste() {
 testeA();
 testeL();
 testeWord();
+Cry(3);
